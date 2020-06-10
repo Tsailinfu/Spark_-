@@ -2,10 +2,9 @@ from pyspark import SparkConf, SparkContext
 conf = SparkConf().setMaster("local").setAppName("My App")
 sc = SparkContext(conf=conf)
 
-
-# --------------------  reduceByKey(func) -------------------- #
 rdd = sc.parallelize({(1, 2), (3, 4), (3, 6)})
 print("rdd:", rdd.collect())
+# --------------------  reduceByKey(func) -------------------- #
 result_1 = rdd.reduceByKey(lambda x, y: x+y)
 print("result_1:", result_1.collect())
 # --------------------  groupByKey() -------------------- #
